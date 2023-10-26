@@ -1,0 +1,18 @@
+{
+  "name": "vite-plugin-csvg",
+  "version": "0.0.1",
+  "main": "./dist/index.js",
+  "description": "Vite plugin to transform SVG files into css/less/sass inline image",
+  "type": "module",
+  "scripts": {
+    "build": "rimraf dist && tsc -p .",
+    "dev": "tsc -w -p ."
+  },
+  "devDependencies": {
+    "@rollup/pluginutils": "^5.0.5",
+    "@types/node": "^20.8.9",
+    "rimraf": "^5.0.5",
+    "typescript": "^5.2.2",
+    "vite": "^4.5.0"
+  }
+}
