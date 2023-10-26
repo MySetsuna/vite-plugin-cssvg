@@ -22,7 +22,7 @@ export default function CssSvgInlinePlugin({
   let config: ResolvedConfig;
 
   return {
-    name: "vite-plugin-csvg",
+    name: "vite-plugin-cssvg",
     enforce: "pre", // to override `vite:asset`'s behavior
     configResolved(resolvedConfig) {
       // 记录最终配置

@@ -1,4 +1,4 @@
-# vite-plugin-csvg #
+# vite-plugin-cssvg #
 
 ## Vite Plugin for svg in CSS/Less/SCSS ##
 

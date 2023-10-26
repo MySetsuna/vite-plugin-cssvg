@@ -1,5 +1,5 @@
 {
-  "name": "vite-plugin-csvg",
+  "name": "vite-plugin-cssvg",
   "version": "0.0.1",
   "main": "./dist/index.js",
   "description": "Vite plugin to transform SVG files into css/less/sass inline image",
