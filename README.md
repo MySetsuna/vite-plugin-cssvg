@@ -8,6 +8,7 @@ transform `url(**/*.svg)` to `url('data:image/svg+xml;utf8,<svg>...</svg>')`
 
 ```css
 1. single imported svg
+
 // index.css before transform
 .some-class{
     background: url(src/asset/a.svg) // support alias eg. url(@/asset/a.svg)
@@ -16,7 +17,9 @@ transform `url(**/*.svg)` to `url('data:image/svg+xml;utf8,<svg>...</svg>')`
 .some-class{
     background: url('data:image/svg+xml;utf8,<svg>...</svg>')
 }
+
 2. imported svg used many times
+
 // before
 #root{
     --svg-a: url(src/asset/a.svg)
