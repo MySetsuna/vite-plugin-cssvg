@@ -1,6 +1,6 @@
 import { createFilter, FilterPattern } from "@rollup/pluginutils";
 import fs from "fs";
-import path from "path";
+import { join } from "path";
 import type { Alias, Plugin, ResolvedConfig } from "vite";
 
 /**
@@ -23,9 +23,8 @@ export default function CssSvgInlinePlugin({
 
   return {
     name: "vite-plugin-cssvg",
-    enforce: "pre", // to override `vite:asset`'s behavior
+    enforce: "pre", 
     configResolved(resolvedConfig) {
-      // 记录最终配置
       config = resolvedConfig;
     },
     async load(id) {
@@ -65,7 +64,7 @@ export default function CssSvgInlinePlugin({
           let svgData = replaceMatchUrl;
           try {
             const svg = fs.readFileSync(
-              match ? svgUrl : path.join(__dirname, svgUrl),
+              match ? svgUrl : join(__dirname, svgUrl),
               "utf-8"
             );
             if (svg.length < 1024 * inlineLimit) {
