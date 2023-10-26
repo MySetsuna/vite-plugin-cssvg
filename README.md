@@ -1,5 +1,10 @@
 # vite-plugin-cssvg #
 
+![Static Badge](https://img.shields.io/badge/author-jxk-blue)
+![Static Badge](https://img.shields.io/badge/version-1.0.0-brightyellow)
+![npm](https://img.shields.io/npm/dw/%40jackjiang18/vite-plugin-cssvg)
+
+
 ## Vite Plugin for svg in CSS/Less/SCSS ##
 
 transform `url(**/*.svg)` to `url('data:image/svg+xml;utf8,<svg>...</svg>')`
@@ -55,3 +60,7 @@ defualt: `[/\.s?css/, /\.less/]`
 #### 3. inlineLimit?: `number` ####
 
 default: `10` (kb)
+
+## LICENSE ##
+
+![GitHub](https://img.shields.io/github/license/yinguobing/cnn-facial-landmark)
