@@ -23,7 +23,7 @@ export default function CssSvgInlinePlugin({
 
   return {
     name: "vite-plugin-cssvg",
-    enforce: "pre", 
+    enforce: "pre",
     configResolved(resolvedConfig) {
       config = resolvedConfig;
     },
@@ -75,9 +75,12 @@ export default function CssSvgInlinePlugin({
                   svgData.replace(/\t|\n|\v|\r|\f/g, "")
                 )}')`
               );
+            } else {
+              return null
             }
           } catch (error) {
             console.log(error);
+            return null
           }
         }
         return {
