@@ -27,8 +27,10 @@
       "require": "./dist/index.cjs"
     }
   },
-  "devDependencies": {
+  "dependencies": {
     "@rollup/pluginutils": "^5.0.5",
+  },
+  "devDependencies": {
     "@types/node": "^20.8.9",
     "rimraf": "^5.0.5",
     "typescript": "^5.2.2",
