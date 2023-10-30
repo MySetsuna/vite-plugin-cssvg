@@ -37,10 +37,10 @@ export default function CssSvgInlinePlugin({
         for (let index = 0; index < replaceMatch.length; index++) {
           const replaceMatchUrl = replaceMatch[index];
 
-          const svgUrlMatch = replaceMatchUrl.match(/(?<=(url\("?)).*\.svg/g);
+          const svgUrlMatch = replaceMatchUrl.match(/[^(url\("?)].*\.svg/g);
           if (!svgUrlMatch) continue;
-          let svgUrl = svgUrlMatch[0].replace('"', "");
-          const svgUrlArr = svgUrl.split(/\//);
+          let svgUrl = svgUrlMatch[0];
+          const svgUrlArr = svgUrl.split("/");
           const maybeAlias = svgUrlArr[0];
           const alias = config.resolve.alias;
           let match: Alias | undefined = undefined;
