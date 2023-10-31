@@ -40,7 +40,7 @@ export default function CssSvgInlinePlugin({
           if (!svgUrlMatch) continue;
           let svgUrl = svgUrlMatch[0];
           const svgUrlArr = svgUrl.split("/");
-          const maybeAlias = svgUrlArr[0] || svgUrlArr[1];
+          const maybeAlias = svgUrlArr[1];
           const alias = config.resolve.alias;
           let match: Alias | undefined = undefined;
           if (alias instanceof Array) {
