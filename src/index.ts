@@ -50,7 +50,7 @@ export default function CssSvgInlinePlugin({
             if (result?.replacement) {
               svgUrl = svgUrlArr
                 .map((item, index) => {
-                  if (index === 0) {
+                  if (index === 1) {
                     return result.replacement;
                   }
                   return item;
