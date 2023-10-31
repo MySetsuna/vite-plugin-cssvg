@@ -1,8 +1,7 @@
 import { createFilter, FilterPattern } from "@rollup/pluginutils";
 import fs from "fs";
-import { join } from "path";
+import { join, resolve } from "path";
 import type { Alias, Plugin, ResolvedConfig } from "vite";
-
 /**
  * @param inlineLimit (kb)
  */
@@ -41,7 +40,7 @@ export default function CssSvgInlinePlugin({
           if (!svgUrlMatch) continue;
           let svgUrl = svgUrlMatch[0];
           const svgUrlArr = svgUrl.split("/");
-          const maybeAlias = svgUrlArr[0];
+          const maybeAlias = svgUrlArr[1];
           const alias = config.resolve.alias;
           let match: Alias | undefined = undefined;
           if (alias instanceof Array) {
@@ -64,7 +63,7 @@ export default function CssSvgInlinePlugin({
           let svgData = replaceMatchUrl;
           try {
             const svg = fs.readFileSync(
-              match ? svgUrl : join(__dirname, svgUrl),
+              match ? svgUrl : join(resolve(), svgUrl),
               "utf-8"
             );
             if (svg.length < 1024 * inlineLimit) {
@@ -76,11 +75,11 @@ export default function CssSvgInlinePlugin({
                 )}')`
               );
             } else {
-              return null
+              return null;
             }
           } catch (error) {
             console.log(error);
-            return null
+            return null;
           }
         }
         return {

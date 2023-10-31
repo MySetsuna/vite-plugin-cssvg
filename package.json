@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-cssvg",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Vite plugin to transform SVG files into css/less/sass inline image",
   "keywords": [
     "transform SVG",
@@ -20,21 +20,23 @@
   "files": [
     "dist"
   ],
+  "author": "Xuekai Jiang",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.min.js",
-      "require": "./dist/index.cjs"
+      "import": "./dist/index.js"
     }
   },
   "dependencies": {
     "@rollup/pluginutils": "^5.0.5"
   },
+  "peerDependencies": {
+    "vite": "^2.6.0 || 3 || 4"
+  },
   "devDependencies": {
     "@types/node": "^20.8.9",
     "rimraf": "^5.0.5",
     "typescript": "^5.2.2",
-    "uglify-js": "^3.17.4",
-    "vite": "^4.5.0"
+    "uglify-js": "^3.17.4"
   }
 }
