@@ -16,7 +16,7 @@ transform `url(**/*.svg)` to `url('data:image/svg+xml;utf8,<svg>...</svg>')`
 
 // index.css before transform
 .some-class{
-    background: url(/src/asset/a.svg) // support alias eg. url(/@/asset/a.svg)
+    background: url(/src/asset/a.svg) // support alias eg. url(/@/asset/a.svg) or url(@/asset/a.svg) (without '/') is also ok
 }
 // after 
 .some-class{
