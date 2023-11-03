@@ -30,36 +30,22 @@ export default function CssSvgInlinePlugin({
       if (!filter(id)) return;
       const filePath = id.replace(postfixRE, "");
       const code = await fs.promises.readFile(filePath, "utf8");
-      const replaceMatch = code.match(/url\("?.*\.svg"?\)/g);
+      const replaceMatch = code.match(/url\("?'?.*\.svg"?'?\)/g);
       if (replaceMatch) {
         let newCode = code;
         for (let index = 0; index < replaceMatch.length; index++) {
           const replaceMatchUrl = replaceMatch[index];
 
-          const svgUrlMatch = replaceMatchUrl.match(/[^(url\("?)].*\.svg/g);
+          const svgUrlMatch = replaceMatchUrl.match(/[^(url\("?'?)].*\.svg/g);
           if (!svgUrlMatch) continue;
           let svgUrl = svgUrlMatch[0];
-          const svgUrlArr = svgUrl.split("/");
-          const alias = config.resolve.alias;
-          let resolveUrl;
-          if (alias instanceof Array) {
-            resolveUrl = svgUrlArr.map((item) => {
-              const result = alias.find((alia) => {
-                return alia.find === item;
-              });
-              if (result) {
-                return result.replacement;
-              }
-              return item;
-            });
-          }
 
+          const resolveSourcce = await this.resolve(svgUrl, id);
           let svgData = replaceMatchUrl;
+          if (!resolveSourcce) continue;
           try {
-            const svg = fs.readFileSync(
-              resolveUrl ? resolve(...resolveUrl) : svgUrl,
-              "utf-8"
-            );
+            const svg = fs.readFileSync(resolveSourcce.id, "utf-8");
+
             if (svg.length < 1024 * inlineLimit) {
               svgData = svg;
               newCode = newCode.replace(
@@ -69,11 +55,11 @@ export default function CssSvgInlinePlugin({
                 )}')`
               );
             } else {
-              return null;
+              continue;
             }
           } catch (error) {
             console.log(error);
-            return null;
+            continue;
           }
         }
         return {
